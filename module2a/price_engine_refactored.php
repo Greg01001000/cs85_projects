@@ -21,8 +21,8 @@
         <?php
             // --- Configuration: Change these values to test all business rules! ---
             $size = 'XL'; // Options: 'S', 'M', 'L', 'XL'
-            $color = 'Sunset Orange'; // Any string, but test with 'Sunset Orange' or 'Ocean Blue'
-            $isCustomized = false; // Options: true, false
+            $color = 'Ocean Blue'; // Any string, but test with 'Sunset Orange' or 'Ocean Blue'
+            $isCustomized = true; // Options: true, false
             $customerFirstName = 'Gregory';
 
             // --- Part A: Implement the logic below using ONLY simple, nested if-statements ---
@@ -53,6 +53,25 @@
                 $finalPrice -= 1;
                 $details .="<li>Long Name Discount: <span>-$1.00</span></li>";
             }
+
+            /*
+            My biggest logic challenge was confirming that the logic here is really this simple,
+            because I've encountered much more complicated conditional logic in other courses. 
+            Most of the conditions in this assignment are independent of each other, except for
+            one elseif, one 'or', and one nested-if. So I reread the business rules a couple of 
+            times to confirm that.
+
+            The first time I ran price_engine.php, it didn't add the $3 text upcharge for XL 
+            shirts. I saw that I made a typo in that 'if' condition (L instead of XL). I added the
+            missing X, and then it worked. All the other combinations of values worked.
+
+            The harder parts were finding the length of $customerFirstName (I didn't see that in
+            our reading material, and I had to decide between strlen() and mb_strlen()--seems like
+            customer names could definitely have non-ASCII characters in them) and learning how to
+            run price_engine.php (also not in our reading material or assignment instructions; I
+            asked Claude, and it told me how to add a Route to web.php). But because I've taken 
+            other programming courses, none of this was actually difficult.
+            */
 
             // --- DO NOT EDIT BELOW THIS LINE ---
             echo "<ul>" . $details . "</ul>";
