@@ -27,6 +27,6 @@ Route::get('/', function () {
     return "Make sure you know your variables' types!";
 });
 
-Route::get('/module2a/price_engine', function () {
+Route::get('/module2a/price_engine.php', function () {
     require base_path('module2a/price_engine.php');
 });

@@ -22,7 +22,7 @@
             // --- Configuration: Change these values to test all business rules! ---
             $size = 'XL'; // Options: 'S', 'M', 'L', 'XL'
             $color = 'Sunset Orange'; // Any string, but test with 'Sunset Orange' or 'Ocean Blue'
-            $isCustomized = true; // Options: true, false
+            $isCustomized = false; // Options: true, false
             $customerFirstName = 'Gregory';
 
             // --- Part A: Implement the logic below using ONLY simple, nested if-statements ---
@@ -49,7 +49,7 @@
             if ($isCustomized) {
                 $finalPrice += 5;
                 $details .="<li>Custom Text Upcharge: <span>+$5.00</span></li>";
-                if ($size =='L') {
+                if ($size =='XL') {
                     $finalPrice += 3;
                     $details .="<li>XL Text Upcharge: <span>+$3.00</span></li>";
                 }
