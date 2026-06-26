@@ -30,3 +30,7 @@ Route::get('/', function () {
 Route::get('/module2a/price_engine.php', function () {
     require base_path('module2a/price_engine.php');
 });
+
+Route::get('/module2a/price_engine_refactored.php', function () {
+    require base_path('module2a/price_engine_refactored.php');
+});
