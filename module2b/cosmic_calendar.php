@@ -26,6 +26,7 @@
         <h1>Cosmic Calendar</h1>
         <div class="calendar-grid">
             <?php
+                // Length of name is start point of Cosmic Calendar
                 $firstName = 'Gregory';
 
                 // Fetch the raw JSON string from the URL
@@ -35,15 +36,18 @@
                 // Decode the JSON string into a PHP object
                 $data = json_decode($jsonString);
 
-                // Set loop limit
+                // Set loop start point and one cosmic interval
                 $nameLen = strlen($firstName);
 
                 // Extract the date data from the API response
                 $dateTimeString = $data->dateTime;
                 $date = new DateTime($dateTimeString);
+
+                // $dayOfYear is loop ending point; $month is 2nd cosmic interval
                 $dayOfYear = (int)$date->format('z') + 1;
                 $month = $data->month;
 
+                // Show days of year w/ styling for multiples of $nameLen and $month
                 for ($i = $nameLen; $i <= $dayOfYear; $i++) {
                     $cssClass = 'day-box';  
                     if ($i % $nameLen == 0 && $i % $month == 0) {
@@ -55,7 +59,16 @@
                     }
                     echo "<div class='$cssClass'>$i</div>";
                 }
-
+            /*
+            MY DEBUGGING LOG:
+            Problem: I didn't understand that we needed to (or could) apply two CSS classes 
+            simultaneously to the cosmic numbers; so my first attempt applied only one class to
+            each number. The output didn't look quite right.
+            Solution: Looking again at the CSS classes and the instructions triggered my
+            realization that we needed to apply two CSS classes simultaneously to the cosmic 
+            numbers. I asked Claude how to do that. Claude explained space-separated classes in
+            one string, accomplished with .= ; so I coded that, and it worked.
+            */
             ?>
         </div>
     </div>
