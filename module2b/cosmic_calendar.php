@@ -26,7 +26,7 @@
         <h1>Cosmic Calendar</h1>
         <div class="calendar-grid">
             <?php
-                $firstName = 'Gregory'
+                $firstName = 'Gregory';
 
                 // Fetch the raw JSON string from the URL
                 $jsonString = file_get_contents(
@@ -41,6 +41,21 @@
                 // Extract the date data from the API response
                 $dateTimeString = $data->dateTime;
                 $date = new DateTime($dateTimeString);
+                $dayOfYear = (int)$date->format('z') + 1;
+                $month = $data->month;
+
+                for ($i = $nameLen; $i <= $dayOfYear; $i++) {
+                    if ($i % $nameLen == 0 && $i % $month == 0) {
+                        $cssClass = 'cosmic-both';
+                    } elseif ($i % $nameLen == 0) {
+                        $cssClass = 'cosmic-name';
+                    } elseif ($i % $month == 0) {
+                        $cssClass = 'cosmic-month';
+                    } else {
+                        $cssClass = 'day-box';                        
+                    }
+                    echo "<div class='$cssClass'>$i</div>";
+                }
 
             ?>
         </div>
