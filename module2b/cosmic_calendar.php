@@ -45,14 +45,13 @@
                 $month = $data->month;
 
                 for ($i = $nameLen; $i <= $dayOfYear; $i++) {
+                    $cssClass = 'day-box';  
                     if ($i % $nameLen == 0 && $i % $month == 0) {
-                        $cssClass = 'cosmic-both';
+                        $cssClass .= ' cosmic-both';
                     } elseif ($i % $nameLen == 0) {
-                        $cssClass = 'cosmic-name';
+                        $cssClass .= ' cosmic-name';
                     } elseif ($i % $month == 0) {
-                        $cssClass = 'cosmic-month';
-                    } else {
-                        $cssClass = 'day-box';                        
+                        $cssClass .= ' cosmic-month';
                     }
                     echo "<div class='$cssClass'>$i</div>";
                 }
